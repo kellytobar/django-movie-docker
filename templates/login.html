@@ -1,0 +1,38 @@
+{% extends 'base-movie.html' %}
+
+{% block titulo %}
+	Login
+{% endblock titulo %}
+
+{% block contenido %}
+	<h2>{{msj}}</h2>
+	<form action="" method="POST">
+	{% csrf_token %}
+	
+
+	<div class="container h-100">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-sm-12 col-md-5 col-lg-5 pt-2 pl-5 pr-5 pb-5" id="auth-container">
+
+	{{formulario.as_p}}
+	<input type="submit" class="btn-primary btn-lg" name="login" value="login">
+	</form>
+	<a href="{% url 'nuevo_perfil' %}"><strong>Registrate</strong>
+	</a>
+	<!--<div>
+	<br>
+	
+	<a href="{% url 'social:begin' 'google-oauth2' %}"><strong>Google</strong><br>
+	</a>
+	<a href="{% url 'social:begin' 'facebook' %}"><strong>FaceBook</strong><br>
+	</a>
+	<a href="{% url 'social:begin' 'twitter' %}"><strong>Twitter</strong><br>
+	</a>
+
+	</div>
+	-->
+			</div>
+		</div>
+	</div>
+	
+{% endblock contenido %}

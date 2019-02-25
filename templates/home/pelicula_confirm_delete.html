@@ -1,0 +1,15 @@
+{% extends 'base-movie.html' %}
+
+{% block titulo %}
+	Eliminar pelicula 
+{% endblock titulo %}
+
+{% block contenido %}
+	<div class="container">
+	<h2>Eliminar pelicula</h2><br>
+	<form method="post">{% csrf_token %}
+    <p>Esta seguro que quiere eliminar: "{{ object }}"?</p>
+    <input type="submit" class="btn btn-warning" value="Confirmar" />
+	</form>
+	</div>
+{% endblock contenido %}

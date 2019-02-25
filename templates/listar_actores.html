@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+	{%block titulo%}
+	Lista de actores
+	{% endblock titulo%}
+	
+{% block contenido %}
+	<h3>Lista de actores</h3>
+	
+	{% for p in lista %}
+
+	<p>
+		Id:{{p.id}}
+		Nombre: {{p.nombre}}
+		{% if p.foto %}
+			<img src="/media/{{p.foto}}" width="80px">
+		{% endif %}
+		Peliculas: {{p.actor}}
+		
+	</p>
+	{% endfor %}
+
+{% endblock contenido %}

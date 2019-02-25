@@ -1,0 +1,55 @@
+{% extends 'base-movie.html' %}
+
+{% block titulo %}
+	Tus sugerencias
+{% endblock titulo %}
+{% block estilos %}
+	td, th{
+	max-width: 40px;
+}
+{% endblock %}
+{% block contenido %}
+<div class="container">
+	<h3>Te sugerimos las peliculas de tus generos favoritos: 
+		{% for x in gener %}
+		{{x.nombre}}
+		{% endfor %}
+	</h3>
+	<br>
+	<!--{{id_log}}
+	<br>
+	{{user_log}}
+	<br> 
+	-->
+	
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th scope="col">Nombre</th>
+					<th scope="col">Año de estreno</th>
+					<th scope="col">Sinopsis</th>
+					<th scope="col">Ver detalles</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				{% for x in lista_sin_rep %}
+					<tr>
+						<td>{{ x.nombre }}</td>
+						<td>{{ x.anio_estreno }}</td>
+						<td>{{ x.sinopsis}}</td>
+						<td>
+							<a href="{% url 'ver_pelicula' pk=x.id %}">
+							{% if x.foto_vertical %}
+								<img src="/media/{{ x.foto_vertical }}" width="100px">
+							{% endif %}
+							</a>
+						</td>
+						
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	
+{% endblock contenido %}

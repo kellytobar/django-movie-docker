@@ -1,0 +1,24 @@
+{% extends 'base-movie.html' %}
+{% load static %}
+
+{% block titulo %}
+	Agregar pelicula
+{% endblock titulo %}
+{% block estilos %}
+	.container{
+	padding-bottom:35px;
+
+}
+{% endblock estilos %}
+{% block contenido %}
+	<div class="container">
+		<h2>Agregue una pelicula</h2><br>
+		<form action="" method="post"> <!--le pasa al html archivos desde la vista -->
+			<div class="form-group">
+			{% csrf_token %}
+			{{form.as_p}}
+			</div>
+			<input type="submit" name="Guardar" value="Guardar" class="btn btn-warning">
+		</form>
+	</div>
+{% endblock contenido %}

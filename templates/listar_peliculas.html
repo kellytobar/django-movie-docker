@@ -1,0 +1,61 @@
+{% extends 'base-movie.html' %}
+
+{% block titulo %}
+	Lista de peliculas
+{% endblock titulo %}
+{% block estilos %}
+	td, th{
+	max-width: 40px;
+}
+{% endblock %}
+{% block contenido %}
+<div class="container">
+	<h1>Lista de Peliculas</h1><br>
+	{% if request.user.is_authenticated and request.user.is_superuser %}
+		<div class="">
+			<a class="btn btn-outline-primary" href="{% url 'agregar_pelicula' %}"> <div class="fas fa-plus"></div> <strong>Agregar pelicula</strong></a>		
+		</div>	
+	{% endif %}
+	<br>
+	
+			
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">id</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Año de estreno</th>
+					<th scope="col">Sinopsis</th>
+					<th scope="col">Imagen</th>
+					<th scope="col">Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for x in lista %}
+					<tr>
+						<th scope="row">{{ forloop.counter }}</th>
+						<td>{{ x.id }}</td>
+						<td>{{ x.nombre }}</td>
+						<td>{{ x.anio_estreno }}</td>
+						<td>{{ x.sinopsis}}</td>
+						<td>
+							{% if x.foto_vertical %}
+								<img src="/media/{{ x.foto_vertical }}" width="100px">
+							{% endif %}
+						</td>
+						<td>
+							<a href="{% url 'ver_pelicula' pk=x.id %}"><strong>Ver</strong></a>
+							{% if request.user.is_authenticated and request.user.is_superuser %}
+								<a href="{% url 'editar_pelicula' pk=x.id %}"> <strong>Editar</strong></a>
+								<a href="{% url 'eliminar_pelicula' pk=x.id %}"><strong>Eliminar</strong></a>
+							{% endif %} 
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	
+{% endblock contenido %}
+

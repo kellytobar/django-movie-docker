@@ -1,0 +1,30 @@
+{% extends 'base-movie.html' %}
+{% block titulo %}
+	Nuevo Perfil
+{% endblock %}
+
+{% block estilos %}
+
+.container{
+	padding-top:30px;
+	padding-bottom:30px;
+}
+{% endblock %}
+
+{% block contenido %}
+	<div class="row">
+		<div class="container">
+	<form action="" method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		
+		<div class="col-sm-4">
+		{{ form_1.as_p }}
+		</div>
+		<div class="col-sm-4">		
+		{{ form_2.as_p}}
+		<input type="submit" class="btn-primary btn-lg" name="Crear Perfil">
+		</div>
+		
+		</div>
+	</form>
+{% endblock %}

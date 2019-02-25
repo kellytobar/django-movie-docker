@@ -1,0 +1,48 @@
+{% extends 'base-movie.html' %}
+
+{% block titulo %}
+	Ver pelicula
+{% endblock titulo %}
+
+{% block estilos %}
+	.container{
+	padding-bottom:35px;
+	padding-top:25px;
+
+	}
+	.row{
+	padding: 10px;
+}
+
+{% endblock estilos %}
+
+{% block contenido %}
+	<div class="container">
+	<div class="row">
+    <div class="col-sm-4" >
+    	{% if object.foto_horizontal %}
+			<img src="/media/{{object.foto_horizontal}}" width="300px">
+		{% endif %}	
+    </div>
+    <div class="col-sm-8" >
+    	<h1><strong>{{ object.nombre }}</strong></h1>
+		<h3>Año de estreno: {{ object.anio_estreno }}</h3>
+		<h3>Duracion: {{ object.duracion_min }} minutos</h3>
+		<h3>Genero: 
+			{% for x in object.genero.all %}
+				{{x.nombre}}
+			{% endfor %}
+		</h3>
+    </div>
+  	</div>
+  	<div class="row">
+    <div class="col-sm-12">
+
+    <div class="panel panel-default">
+    <div class="panel-heading">Sinopsis</div>
+    <div class="panel-body">{{ object.sinopsis }}</div>
+ 
+	
+	</div>
+	
+{% endblock contenido %}
